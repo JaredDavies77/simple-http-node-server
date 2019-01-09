@@ -40,21 +40,15 @@ END IF
 
 Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
-var phoneBook = {
-  person1: {
-    name: "Jared Davies",
-    phoneNumber: "111-222-3333"
-  },
-  person2: {
-    name: "John Davies",
-    phoneNumber: "444-555-6666"
-  }
-}
+var phoneBook = [
+  {name: "Jared Davies", phoneNumber: "111-222-3333"},
+  {name: "John Davies", phoneNumber: "444-555-6666"}
+]
 
 function search(fullName){
   for (let i=0; i>=phoneBook.length; i++){
-	if (fullName === phoneBook(i).name){
-		return phoneBook(i).phoneNumber;
+	if (fullName === phoneBook[i].name){
+		return phoneBook[i].phoneNumber;
 	}
 	else {
 		console.log("Not Listed");
