@@ -46,7 +46,7 @@ var phoneBook = [
 ]
 
 function search(fullName){
-  for (let i=0; i>=phoneBook.length; i++){
+  for (let i=0; i<phoneBook.length; i++){
 	if (fullName === phoneBook[i].name){
 		return phoneBook[i].phoneNumber;
 	}
