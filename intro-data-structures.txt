@@ -54,11 +54,12 @@ console.log(parkLine);
 f) If Patrick wants to leave the line, how would you delete him from the array?
 
 
-var leaveLine = function(index, numPeopleLeaving){
-   parkLine.splice(index, numPeopleLeaving);
+var leaveLine = function(name){
+   var indx = parkLine.indexOf(name);
+   parkLine.splice(indx, 1);
 }
 
-leaveLine(3,1);
+leaveLine("Patrick");
 console.log(parkLine);
 
 
