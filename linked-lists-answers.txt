@@ -1,0 +1,170 @@
+What are some pros and cons of using linked lists instead of arrays?
+
+Pros:Easy to insert and delete, flexible in size
+
+Cons:Must start from the beginning always when searching for an element, can take longer
+
+
+Come up with a real world example of a linked list.
+
+A real world example of a linked list would be a video game story mode that you must complete each level to move on to the next. 
+
+The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+
+FUNCTION push(element)
+CREATE node
+SET node.value TO element
+SET node.next TO null
+
+IF the head node does not exist
+ THEN SET head to node
+ELSE
+ SET current to head
+ 	WHILE current.next exists
+	SET current to current.next
+ SET current.next to node
+END IF
+END FUNCTION
+
+
+This is only accounting for if there is not a head node or if there only is a head node. It needs to continue to move through the list until the end of the list. 
+
+function linkedList(){
+	var head = null;
+
+	class Node {
+		constructor(element){
+			this.value = element;
+			this.next = null;
+		}
+	}
+	function push(element){
+		var new = new node(element);
+		if(head === null){
+			head = new;
+		} 
+		else {
+			var current = head;
+			while(current.next){
+				current = current.next
+			}
+			current.next = new;
+		}
+	}
+}
+
+
+Given an unsorted singly linked list, remove all duplicates from the linked list.
+Example
+Input: a -> c -> d -> d -> a
+1-2-3-3-1
+h a b c d
+Output: a -> c -> d
+
+I need to create a function that first prints the list. Once the list is printed I will use an if statement inside an if statement to remove duplicates. The first if statement will determine if the value has been seen before. If it has not it will continue. If it has been seen it will move to the next if statement that will remove the duplicate from the list.  
+
+
+class Node {
+	constructor(val){
+		this.value = val;
+		this.next = null;
+	}
+}
+
+let head = new Node(1),
+a = new Node(2),
+b = new Node(3),
+c = new Node(3),
+d = new Node(1);
+
+head.next = a;
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = null;
+
+function printList(ll){ 
+    var current = ll; 
+    var str = ""; 
+    while (current !== null) { 
+        str += current.value + " "; 
+        current = current.next; 
+    } 
+    console.log(str); 
+} 
+
+printList(head);
+
+function removeDuplicates(ll){
+  let prev, 
+      curr = ll, 
+      seen = [];
+  
+  while(curr !== null){
+    if (seen.indexOf(curr.value) >= 0){
+      if (curr.next !== null){
+        prev.next = curr.next;
+        curr = curr.next;
+      } else {
+        prev.next = null;
+        curr = null;
+      }
+    } else {
+      seen.push(curr.value);
+      prev = curr;
+      curr = curr.next;
+    }
+  }
+  
+  return ll;
+}
+removeDuplicates(head);
+printList(head);
+
+
+I created a list for the current letter order. Then I popped all of them into the original list to make the original list reversed.
+
+Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
+
+
+class Node {
+	constructor(val){
+		this.value = val;
+		this.next = null;
+	}
+}
+
+let head = new Node(a),
+a = new Node(b),
+b = new Node(c),
+c = new Node(d),
+
+
+head.next = a;
+a.next = b;
+b.next = c;
+c.next = null;
+
+
+function reverse(ll){
+  let stack = [];
+  while (ll !== null){
+      stack.push(ll);
+      ll = ll.next;
+    
+  }
+    let ll = stack.pop, 
+    current = ll;
+  while (stack.length >= 0){
+    current.next = stack.pop();
+    current = current.next;
+    }
+  return ll;
+  }
+
+reverse(head);
+printList(head);
+
