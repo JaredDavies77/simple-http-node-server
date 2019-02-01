@@ -157,10 +157,10 @@ function reverse(ll){
     
   }
     let ll = stack.pop, 
-    current = ll;
+    cur = ll;
   while (stack.length >= 0){
-    current.next = stack.pop();
-    current = current.next;
+    cur.next = stack.pop();
+    cur = cur.next;
     }
   return ll;
   }
