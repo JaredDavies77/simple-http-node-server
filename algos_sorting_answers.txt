@@ -1,0 +1,50 @@
+
+Write pseudocode for bubble sort.
+ 
+FUNCTION bubbleSort(list)
+   REPEAT
+     SET switched to false
+     FOR i = FIRST INDEX of list to LAST INDEX of list - 1
+       IF list[i] > list[i + 1] THEN
+         SET temp to list[i]
+         SET list[i] to list[i + 1]
+         SET list[i + 1] to temp
+         SET switched to true
+       END IF
+     END FOR
+   UNTIL swapped is FALSE
+   RETURN list
+ END FUNCTION
+
+Write pseudocode for quicksort.
+
+FUNCTION quickSort(list)
+  IF (list.length < 2) 
+    RETURN list;
+  END IF
+  SET pivot equal to list[0];
+  SET left  
+  SET right
+  FOR i equals 1, total equals list.length, i is less than total, and i++
+    IF list[i] is less than pivot
+      PUSH list[i] into left
+    ELSE
+      PUSH list[i] into right
+    END IF
+  END FOR
+  RETURN quickSort(left), pivot, and quickSort(right)
+END FUNCTION
+
+
+
+We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+After doing a bit of research and looking at some examples. It seems that merge and quick are the most efficient because it breaks up the data to smaller collections of data instead of continuously passing through the entire collection.
+
+
+All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+In bucket sort you split the array into smaller buckets. You put whatever you are sorting in the related bucket and then sort each bucket using bucket sort or another sorting method.
+
+An example of this would sorting a million random people using birthdays. In any other sorting method it would take way to long or be too complex. 
+
