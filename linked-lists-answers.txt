@@ -29,29 +29,60 @@ END FUNCTION
 
 This is only accounting for if there is not a head node or if there only is a head node. It needs to continue to move through the list until the end of the list. 
 
-function linkedList(){
-	var head = null;
 
-	class Node {
-		constructor(element){
-			this.value = element;
-			this.next = null;
-		}
-	}
-	function push(element){
-		var new = new node(element);
-		if(head === null){
-			head = new;
-		} 
-		else {
-			var current = head;
-			while(current.next){
-				current = current.next
-			}
-			current.next = new;
-		}
+
+class Node {
+	constructor(val){
+		this.value = val;
+		this.next = null;
 	}
 }
+
+head = new Node(1),
+a = new Node(2),
+b = new Node(3),
+c = new Node(3),
+d = new Node(1);
+
+head.next = a;
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = null;
+
+  function printList(ll){ 
+    var current = ll; 
+    var str = ""; 
+    while (current !== null) { 
+        str += current.value + " "; 
+        current = current.next; 
+    } 
+    console.log(str); 
+} 
+
+printList(head);
+
+	
+	function push(element){
+		var e = new Node(element);
+		if(head === null){
+			head = e;
+		} 
+		else {
+			var curr = head;
+			while(curr.next){
+				curr = curr.next;
+			}
+			curr.next = e;
+            e.next = null;
+		}
+	}
+
+
+push(2);
+printList(head);
+
+
 
 
 Given an unsorted singly linked list, remove all duplicates from the linked list.
@@ -129,42 +160,57 @@ Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
 
-
 class Node {
-	constructor(val){
-		this.value = val;
-		this.next = null;
-	}
+  constructor(val){
+    this.value = val;
+    this.next = null;
+  }
 }
 
-let head = new Node(a),
-a = new Node(b),
-b = new Node(c),
-c = new Node(d),
+let head = new Node("a"),
+    a = new Node("b"),
+    b = new Node("c"),
+    c = new Node("d");
 
 
 head.next = a;
 a.next = b;
 b.next = c;
-c.next = null;
+
+
+function printList(ll){
+  var current = ll;
+  var str = "";
+  while (current !== null) {
+    str += current.value + " ";
+    current = current.next;
+  }
+  console.log(str);
+}
+
+printList(head);
+
 
 
 function reverse(ll){
   let stack = [];
   while (ll !== null){
-      stack.push(ll);
-      ll = ll.next;
-    
+    stack.push(ll);
+    ll = ll.next;
   }
-    let ll = stack.pop, 
-    cur = ll;
-  while (stack.length >= 0){
+
+  ll = stack.pop();
+
+  let cur = ll;
+  while(stack.length > 0){
+
     cur.next = stack.pop();
     cur = cur.next;
-    }
-  return ll;
   }
+  cur.next = null;
 
-reverse(head);
-printList(head);
+  return ll;
+}
 
+let r = reverse(head);
+printList(r);
