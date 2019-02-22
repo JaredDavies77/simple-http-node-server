@@ -1,0 +1,159 @@
+What is a binary tree and what makes it unique to other trees?
+
+A Binary Tree is a tree of data that can have two child Nodes: a left Node and a right Node. 
+
+What is a heuristic?
+
+This is when an algorithm makes guesses to try and solve a problem sooner.
+
+What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+Another example of this would be Siri, Google, or Alexa using heuristics to make the best guess on what you are saying. 
+
+What is the difference between a depth-first search and a breadth-first search?
+
+A depth-first search goes all the way down to the deepest level node and works back up if node is not found. Breadth-first search checks all nodes at each level in order until the correct node is found. 
+
+Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+A undirected, a-cyclic, unweighted graph is linked lists and most trees. It is where one node points to the other and there is no loop. Also, there is no cost to travel between nodes.
+
+What kind of graph is a binary search tree?
+
+An directed, a-cyclic, unweighted graph
+
+Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+
+class Node {
+	constructor(value){
+		this.value = value;
+		this.left = null;
+        this.right = null;
+	}
+}
+
+let head = new Node(8),
+a = new Node(3),
+b = new Node(10),
+c = new Node(1),
+d = new Node(6),
+e = new Node(14),
+f = new Node(4),
+g = new Node(7),
+h = new Node(13);
+
+head.left = a;
+a.left = c;
+a.right = d;
+d.left = f;
+d.right = g;
+head.right = b;
+b.right = e;
+e.left = h;
+
+
+
+function search(num){
+      while (num < head.value && head != null){
+        head = head.left;
+      }
+      while (num > head.value && head != null){
+        head = head.right;
+      } 
+      if (num === head.value){
+      console.log(true);
+      } else {
+      console.log(false);
+      }
+      
+}
+search(10);
+
+Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+
+class Node {
+	constructor(value){
+		this.value = value;
+		this.left = null;
+        this.right = null;
+	}
+}
+
+let head = new Node(8),
+a = new Node(3),
+b = new Node(10),
+c = new Node(1),
+d = new Node(6),
+e = new Node(14),
+f = new Node(4),
+g = new Node(7),
+h = new Node(13);
+
+head.left = a;
+a.left = c;
+a.right = d;
+d.left = f;
+d.right = g;
+head.right = b;
+b.right = e;
+e.left = h;
+
+
+var count1 = 0;
+var count2 = 0;
+
+function distance(n1,n2){
+    var lcaval = lca(head, n1, n2);
+    var d1 = distance1(lcaval, n1);
+    var d2 = distance2(lcaval, n2);
+    var count = d1 + d2
+   console.log(count);
+   return(count);
+      
+}
+  
+      
+var lca = function(head, n1, n2){
+    if (n1 < head.value && n2 < head.value){
+      return lca(head.left, n1, n2);
+    } else if (n1 > head.value && n2 > head.value){
+      return lca(head.right, n1, n2);
+    } else{
+      return head; 
+    }
+}
+
+var distance1 = function(lcaval, n1){
+       if (n1 < lcaval.value){
+        lcaval = lcaval.left;
+        count1++;
+        return distance1(lcaval,n1);
+       } else if(n1 > lcaval.value){
+        lcaval = lcaval.right;
+        count1++;
+        return distance1(lcaval,n1);
+      } else {
+        return count1;
+      }
+    }
+var distance2 = function(lcaval, n2){
+       if (n2 < lcaval.value){
+        lcaval = lcaval.left;
+        count2++;
+        return distance2(lcaval,n2);
+       } else if(n2 > lcaval.value){
+        lcaval = lcaval.right;
+        count2++;
+        return distance2(lcaval,n2);
+       } else {
+        return count2;
+       }
+      }
+
+distance(1,14);
