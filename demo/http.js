@@ -13,5 +13,6 @@ server.listen(port, (err) => {
   }
 
 fs.writeFileSync('hello-world.txt', 'Hello to this great world', 'utf8');
+
 console.log(`server is listening on ${port}`);
 });
